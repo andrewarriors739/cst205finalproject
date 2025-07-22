@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Study Buddy | Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-top: 0;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .btn-start {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 24px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .btn-start:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            text-align: center;
+            padding: 16px;
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>📚 Study Buddy</h1>
+        <p>Your simple solution to study matching and time management</p>
+    </header>
+
+    <main>
+        <h2>Welcome to Study Buddy!</h2>
+        <p>
+            Study Buddy is a student-built organization tool designed to help classmates connect
+            and succeed. Whether you're looking to coordinate with study partners, manage your
+            to-do list, or stay focused with a Pomodoro timer — you've come to the right place!
+        </p>
+
+        <p>
+            This app was developed for the <strong>CST 205 Design Project</strong> by a team of students aiming to blend
+            tech, teamwork, and productivity into a unified platform.
+        </p>
+
+        <a class="btn-start" href="{{ url_for('unique_signup') }}">🚀 Get Started</a>
+    </main>
+
+    <footer>
+        &copy; {{ 2025 }} CST205 Study Buddy Team • Alexis, Anthony J., James, Andre
+    </footer>
+
+</body>
+</html>
+
