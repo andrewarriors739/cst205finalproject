@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pomodoro Timer</title>
+</head>
+<body>
+    <h2>Pomodoro Timer</h2>
+    <p id="timer">25:00</p>
+    <button onclick="startTimer()">Start</button>
+    <button onclick="resetTimer()">Reset</button>
+
+    <script>
+        let timeLeft = 1500;
+        let timer;
+
+        function startTimer() {
+            clearInterval(timer);
+            timer = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    const minutes = Math.floor(timeLeft / 60);
+                    const seconds = timeLeft % 60;
+                    document.getElementById("timer").innerText =
+                      `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                } else {
+                    clearInterval(timer);
+                    alert("Time's up!");
+                }
+            }, 1000);
+        }
+
+        function resetTimer() {
+            clearInterval(timer);
+            timeLeft = 1500;
+            document.getElementById("timer").innerText = "25:00";
+        }
+    </script>
+</body>
+</html>
