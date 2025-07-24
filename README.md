@@ -14,13 +14,19 @@ Last Updated 7/24/2025
 
 ## Technologies
 - **Backend**: Python, Flask
-- **Frontend**: HTML, CSS (external stylesheet)
+- **Frontend**: HTML, CSS (external stylesheet), JavaScript
+- **Multimedia**: Audio files (WAV format), Confetti animations
+- **External Libraries**: TSParticles Confetti
 
 ## Features
 - **Sign-Up Form**: Students create a simple profile with their course and study style preferences.
 - **Study Buddy Matching**: Automatically pairs users with other students who share similar course and study style preferences.
 - **Task Management**: A dashboard that allows users to create and view personal to-do lists.
-- **Pomodoro Timer**: A focused work session tool with a 25-minute countdown and start/reset controls.
+- **Enhanced Pomodoro Timer**: A focused work session tool with:
+  - 25-minute countdown with start/reset controls
+  - **Audio feedback**: Click sounds for button interactions and bell sound for timer completion
+  - **Visual celebration**: Confetti animation when timer completes
+  - **Professional UI**: Clean, responsive design
 
 ## Installation
 1. Clone the repository:
@@ -83,9 +89,14 @@ study_buddy_app/
 ├── services.py          # Business logic
 ├── data.py              # Data storage and placeholders
 ├── studyapp.py          # Alternative entry point
-├── static/              # Static files (CSS, JS, images)
-│   └── css/
-│       └── style.css
+├── static/              # Static files (CSS, JS, images, audio)
+│   ├── css/
+│   │   └── style.css    # Main stylesheet
+│   ├── js/
+│   │   └── pomodoro.js  # Pomodoro timer functionality with confetti
+│   └── audio/
+│       ├── bell.wav     # Timer completion sound
+│       └── click.wav    # Button interaction sound
 └── templates/           # HTML templates
     ├── dashboard.html
     ├── index.html
@@ -97,6 +108,8 @@ study_buddy_app/
 - **Clean UI**: All pages follow a consistent visual style defined in a shared `style.css` file.
 - **Accessibility**: Inputs and displays are stacked vertically for clarity and mobile-friendliness.
 - **Session-Based**: Users stay logged in through session cookies with a secret key.
+- **Multimedia Enhancement**: Audio feedback and visual animations provide engaging user experience.
+- **Modular JavaScript**: External JS files keep code organized and maintainable.
 
 ## Future Enhancements
 - Implement chat functionality for real-time communication between study buddies.

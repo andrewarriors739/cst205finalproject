@@ -21,34 +21,21 @@
             <a href="{{ url_for('main.dashboard_view') }}" class="btn-start">⬅ Back to Dashboard</a>
         </div>
     </main>
+    
+    <!-- Audio elements -->
+    <audio id="completeSound" preload="auto">
+        <source src="{{ url_for('static', filename='audio/bell.wav') }}" type="audio/wav">
+    </audio>
+    
+    <audio id="tickSound" preload="auto">
+        <source src="{{ url_for('static', filename='audio/click.wav') }}" type="audio/wav">
+    </audio>
+    
     <footer>
         &copy; 2025 CST205 Study Buddy Team • Alexis, Anthony J., James, Andre
     </footer>
 
-    <script>
-        let timeLeft = 1500;
-        let timer;
-
-        function startTimer() {
-            clearInterval(timer);
-            timer = setInterval(function() {
-                if (timeLeft > 0) {
-                    timeLeft--;
-                    const minutes = Math.floor(timeLeft / 60);
-                    const seconds = timeLeft % 60;
-                    document.getElementById("timer").innerText = minutes + ":" + seconds.toString().padStart(2, '0');
-                } else {
-                    clearInterval(timer);
-                    alert("Time's up!");
-                }
-            }, 1000);
-        }
-
-        function resetTimer() {
-            clearInterval(timer);
-            timeLeft = 1500;
-            document.getElementById("timer").innerText = "25:00";
-        }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/pomodoro.js') }}"></script>
 </body>
 </html>
