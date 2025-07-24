@@ -1,5 +1,5 @@
 # ----
-# Study Buddy App
+# Study Buddy App TEST
 # CST 205 Design Project - Study Organization & Matching App
 # Members: Alexis Chavarria, Anthony Jordan Lagura, James Lindfors, Andre Gutierrez
 # Date : 7/25/25
