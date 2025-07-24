@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Study Buddy | Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Dashboard</title>
 </head>
 <body>
     <header>
@@ -13,43 +11,31 @@
     <main>
         <h2>Welcome, {{ learner }}!</h2>
 
-        <section>
-            <h3>Your Study Buddy Matches</h3>
-            <ul>
-                {% for match in match_suggestions %}
-                <li style="margin-bottom: 15px;">
-                    <strong>Username:</strong> {{ match.username }}<br><br>
-                    <strong>Course:</strong> {{ match.course }}<br><br>
-                    <strong>Study Style:</strong> {{ match.study_style }}<br><br>
-                    <strong>Contact:</strong> {{ match.contact }}
-                </li>
-                {% else %}
-                <li>No matches found.</li>
-                {% endfor %}
-            </ul>
-        </section>
+    <h2>Your Study Buddy Matches:</h2>
+    <ul>
+        {% for match in match_suggestions %}
+        <li>{{ match.username }} – {{ match.course }} – {{ match.study_style }} – Contact: {{ match.contact }}</li>
+        {% else %}
+        <li>No matches found.</li>
+        {% endfor %}
+    </ul>
 
-        <section>
-            <h3>Task List</h3>
-            <form method="POST">
-                <input type="text" name="task_entry" placeholder="New task" required>
-                <button type="submit">Add</button>
-            </form>
-            <ul>
-                {% for task in task_list %}
-                {% if task.user == learner %}
-                <li>{{ task.desc }}</li>
-                {% endif %}
-                {% endfor %}
-            </ul>
-        </section>
-        <div style="text-align: center; margin-top: 20px;">
-            <a href="/pomodoro" class="btn-start">🍅 Pomodoro Timer</a>
-            <a href="/logout" class="btn-start" style="margin-left: 10px;">Logout</a>
-        </div>
-    </main>
-    <footer>
-        &copy; 2025 CST205 Study Buddy Team • Alexis, Anthony J., James, Andre
-    </footer>
+    <h2>Task List</h2>
+    <form method="POST">
+        <input type="text" name="task_entry" placeholder="New task" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <ul>
+        {% for task in task_list %}
+        {% if task.user == learner %}
+        <li>{{ task.desc }}</li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+
+    <a href="/pomodoro">Pomodoro Timer</a> |
+    <a href="/logout">Logout</a>
 </body>
 </html>
+
