@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
+    <title>Study Buddy Dashboard</title>
 </head>
 <body>
     <h1>Welcome, {{ learner }}!</h1>
 
+    <!-- Study Buddy Matches -->
     <h2>Your Study Buddy Matches:</h2>
     <ul>
         {% for match in match_suggestions %}
@@ -15,21 +16,39 @@
         {% endfor %}
     </ul>
 
-    <h2>Task List</h2>
+    <!-- Group Task List -->
+    <h2>Group Task List</h2>
     <form method="POST">
-        <input type="text" name="task_entry" placeholder="New task" required>
+        <input type="text" name="task_entry" placeholder="Add a shared task" required>
         <button type="submit">Add</button>
     </form>
 
     <ul>
         {% for task in task_list %}
-        {% if task.user == learner %}
-        <li>{{ task.desc }}</li>
-        {% endif %}
+        <li><strong>{{ task.user }}:</strong> {{ task.desc }}</li>
         {% endfor %}
     </ul>
 
-    <a href="/pomodoro">Pomodoro Timer</a> |
+    <!-- Study Calendar -->
+    <h2>Study Calendar (Basic)</h2>
+    <iframe src="https://calendar.google.com/calendar/embed?src=en.usa%23holiday%40group.v.calendar.google.com"
+            style="border: 0" width="600" height="400" frameborder="0" scrolling="no"></iframe>
+
+    <!-- Study Session Links -->
+    <h3>Start a Study Session:</h3>
+    <ul>
+        <li><a href="https://meet.google.com" target="_blank">📹 Google Meet</a></li>
+        <li><a href="https://zoom.us" target="_blank">📹 Zoom</a></li>
+    </ul>
+
+    <!-- Placeholder Group Chat -->
+    <h2>Group Messages (Demo)</h2>
+    <p>This feature is under development.</p>
+    <p><a href="https://discord.com" target="_blank">Join our Discord Group</a></p>
+
+    <br>
+    <a href="/pomodoro">Go to Pomodoro Timer</a> |
     <a href="/logout">Logout</a>
 </body>
 </html>
+
