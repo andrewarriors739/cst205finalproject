@@ -49,6 +49,29 @@ Last Updated 7/24/2025
 
 5. Open your web browser and go to `http://localhost:5000` to access the app.
 
+## Environment Configuration
+
+The application uses environment variables for configuration. A `.env.example` file is provided as a template.
+
+### Setting up Environment Variables
+
+1. Copy the example environment file:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Edit the `.env` file with your desired configuration.
+
+### Environment Variables Description
+
+| Variable | Description | Default Value |
+|----------|-------------|---------------|
+| `ENV` | Application environment (development/production) | `development` |
+| `PORT` | Port number for the Flask application | `5000` |
+| `DEBUG` | Enable/disable debug mode | `True` |
+| `SECRET_KEY` | Secret key for session management | `super_secret_key_12345` |
+| `DATABASE_URI` | Database connection string | `sqlite:///instance/studybuddy.db` |
+
 ## Project Structure
 ```
 study_buddy_app/

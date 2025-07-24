@@ -5,9 +5,16 @@
 # Date : 7/25/25
 # ----
 
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
 class Config:
     """Application configuration class"""
-    SECRET_KEY = 'super_secret_key_12345'  # TODO: Use environment variable for production
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///studybuddy.db'
+    SECRET_KEY = os.getenv('SECRET_KEY', 'super_secret_key_12345')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI', 'sqlite:///instance/studybuddy.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    DEBUG = True  # TODO: Consider environment variables for debug/production mode
+    DEBUG = os.getenv('DEBUG', 'True').lower() in ['true', '1', 'yes']
+    PORT = int(os.getenv('PORT', 5000))
