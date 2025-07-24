@@ -30,7 +30,7 @@
         <ul>
             {% for task in task_list %}
             <li>
-                <form action="{{ url_for('complete_task', task_id=task.id) }}" method="POST" style="display:inline;">
+                <form action="{{ url_for('main.complete_task', task_id=task.id) }}" method="POST" style="display:inline;">
                     <button type="submit" style="background:none; border:none; cursor:pointer;">
                         {% if task.complete %}
                             ✅
@@ -44,7 +44,7 @@
                 {% else %}
                     {{ task.description }}
                 {% endif %}
-                <form action="{{ url_for('delete_task', task_id=task.id) }}" method="POST" style="display:inline;">
+                <form action="{{ url_for('main.delete_task', task_id=task.id) }}" method="POST" style="display:inline;">
                     <button type="submit" style="color:red;">Delete</button>
                 </form>
             </li>
@@ -53,8 +53,8 @@
             {% endfor %}
         </ul>
 
-        <a href="/pomodoro">Pomodoro Timer</a> |
-        <a href="/logout">Logout</a>
+        <a href="{{ url_for('main.pomodoro_page') }}">Pomodoro Timer</a> |
+        <a href="{{ url_for('main.session_logout') }}">Logout</a>
     </main>
 </body>
 </html>

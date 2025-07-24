@@ -12,6 +12,10 @@ Last Updated 7/24/2025
 - James Lindfors
 - Andre Gutierrez
 
+## Technologies
+- **Backend**: Python, Flask
+- **Frontend**: HTML, CSS (external stylesheet)
+
 ## Features
 - **Sign-Up Form**: Students create a simple profile with their course and study style preferences.
 - **Study Buddy Matching**: Automatically pairs users with other students who share similar course and study style preferences.
@@ -40,18 +44,36 @@ Last Updated 7/24/2025
 
 4. Run the Flask application:
     ```bash
-    python app.py
+    python -m study_buddy_app
     ```
+
 5. Open your web browser and go to `http://localhost:5000` to access the app.
+
+## Project Structure
+```
+study_buddy_app/
+├── __init__.py          # Application factory
+├── __main__.py          # Module entry point
+├── config.py            # Configuration settings
+├── models.py            # Database models
+├── routes.py            # Route handlers
+├── services.py          # Business logic
+├── data.py              # Data storage and placeholders
+├── studyapp.py          # Alternative entry point
+├── static/              # Static files (CSS, JS, images)
+│   └── css/
+│       └── style.css
+└── templates/           # HTML templates
+    ├── dashboard.html
+    ├── index.html
+    ├── pomodoro.html
+    └── signup.html
+```
 
 ## Design Principles
 - **Clean UI**: All pages follow a consistent visual style defined in a shared `style.css` file.
 - **Accessibility**: Inputs and displays are stacked vertically for clarity and mobile-friendliness.
 - **Session-Based**: Users stay logged in through session cookies with a secret key.
-
-## Technologies
-- **Backend**: Python, Flask
-- **Frontend**: HTML, CSS (external stylesheet)
 
 ## Future Enhancements
 - Implement chat functionality for real-time communication between study buddies.
