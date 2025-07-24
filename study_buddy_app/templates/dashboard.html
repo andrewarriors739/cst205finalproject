@@ -10,7 +10,14 @@
         <p>Your simple solution to study matching and time management</p>
     </header>
     <main>
-        <h2>Welcome, {{ learner }}!</h2>
+        <div class="profile-container">
+            {% if profile_picture %}
+                <img src="{{ profile_picture }}" alt="Profile Picture" class="profile-picture">
+            {% else %}
+                <div class="profile-placeholder">👤</div>
+            {% endif %}
+            <h2>Welcome, {{ learner }}!</h2>
+        </div>
 
         <h2>Your Study Buddy Matches:</h2>
         <ul>

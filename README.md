@@ -15,11 +15,12 @@ Last Updated 7/24/2025
 ## Technologies
 - **Backend**: Python, Flask
 - **Frontend**: HTML, CSS (external stylesheet), JavaScript
-- **Multimedia**: Audio files (WAV format), Confetti animations
-- **External Libraries**: TSParticles Confetti
+- **Multimedia**: Audio files (WAV format), Confetti animations, Image upload/processing
+- **External Libraries**: TSParticles Confetti, Pillow (PIL) for image processing
 
 ## Features
-- **Sign-Up Form**: Students create a simple profile with their course and study style preferences.
+- **Enhanced Sign-Up Form**: Students create a profile with their course, study style preferences, and optional profile picture upload
+- **Profile Pictures**: Upload and display custom profile pictures with automatic resizing and base64 storage
 - **Study Buddy Matching**: Automatically pairs users with other students who share similar course and study style preferences.
 - **Task Management**: A dashboard that allows users to create and view personal to-do lists.
 - **Enhanced Pomodoro Timer**: A focused work session tool with:
@@ -88,7 +89,7 @@ study_buddy_app/
 ├── routes.py            # Route handlers
 ├── services.py          # Business logic
 ├── data.py              # Data storage and placeholders
-├── studyapp.py          # Alternative entry point
+├── image_service.py     # Image processing utilities
 ├── static/              # Static files (CSS, JS, images, audio)
 │   ├── css/
 │   │   └── style.css    # Main stylesheet

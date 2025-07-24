@@ -5,9 +5,10 @@
 # Date : 7/25/25
 # ----
 
-from flask import Blueprint, render_template, request, redirect, session, url_for
+from flask import Blueprint, render_template, request, redirect, session, url_for, flash
 from .models import User
 from .services import UserService, TaskService, MatchingService
+from .image_service import ImageService
 
 # Create blueprint for routes
 main = Blueprint('main', __name__)
@@ -24,8 +25,22 @@ def unique_signup():
         fav_course = request.form['course']
         friend_style = request.form['study_style']
 
+        # Handle profile picture upload
+        profile_picture_data = None
+        if 'profile_picture' in request.files:
+            file = request.files['profile_picture']
+            if file and ImageService.is_valid_image(file):
+                profile_picture_data = ImageService.process_profile_picture(file)
+                if not profile_picture_data:
+                    flash('Error processing image. Please try a different file.', 'error')
+                    return render_template('signup.html')
+
         # Create user in DB if not existing (for task persistence)
-        UserService.create_or_get_user(chosen_username)
+        user = UserService.create_or_get_user(chosen_username)
+        
+        # Update user with profile picture if provided
+        if profile_picture_data and user:
+            UserService.update_profile_picture(user, profile_picture_data)
         
         # Store user details in memory for matching (existing logic)
         UserService.store_user_data(chosen_username, fav_course, friend_style)
@@ -55,12 +70,16 @@ def dashboard_view():
 
     # Retrieve persistent tasks for logged-in user
     user_tasks = TaskService.get_user_tasks(current_user.id)
+    
+    # Get user's profile picture
+    profile_picture = UserService.get_user_profile_picture(current_username)
 
     return render_template(
         'dashboard.html',
         learner=current_username,
         match_suggestions=dashboard_matches,
-        task_list=user_tasks
+        task_list=user_tasks,
+        profile_picture=profile_picture
     )
 
 # Add routes to remove and complete tasks

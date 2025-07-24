@@ -11,6 +11,7 @@ class User(db.Model):
     """User model for task persistence"""
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
+    profile_picture = db.Column(db.Text, nullable=True)  # Base64 encoded image
 
 class Task(db.Model):
     """Task model for user task management"""

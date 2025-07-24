@@ -29,6 +29,19 @@ class UserService:
             'course': course,
             'study_style': study_style,
         }
+    
+    @staticmethod
+    def update_profile_picture(user, profile_picture_data):
+        """Update user's profile picture"""
+        user.profile_picture = profile_picture_data
+        db.session.commit()
+        return user
+    
+    @staticmethod
+    def get_user_profile_picture(username):
+        """Get user's profile picture data"""
+        user = User.query.filter_by(username=username).first()
+        return user.profile_picture if user else None
 
 class TaskService:
     """Service class for task-related operations"""
