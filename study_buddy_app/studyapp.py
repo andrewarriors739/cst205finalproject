@@ -8,6 +8,7 @@
 from flask import Flask, render_template, request, redirect, session, url_for
 
 portal_flask_app = Flask(__name__)
+portal_flask_app.secret_key = 'super_secret_key_12345'
 
 # ---- Data Models (Placeholders) ----
 
@@ -26,12 +27,10 @@ tasks_data = []  # TODO: Link each user's tasks persistently
 
 @portal_flask_app.route('/')
 def upstart_home():
-    # TODO: Design the homepage template
     return render_template('index.html')
 
 @portal_flask_app.route('/signup', methods=['GET', 'POST'])
 def unique_signup():
-    # TODO: Validate input, add error handling
     if request.method == 'POST':
         chosen_username = request.form['username']
         fav_course = request.form['course']
@@ -42,12 +41,10 @@ def unique_signup():
         }
         session['username'] = chosen_username
         return redirect(url_for('dashboard_view'))
-    # TODO: Create the sign up form template
     return render_template('signup.html')
 
 @portal_flask_app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard_view():
-    # TODO: Dashboard logic is placeholder, needs personalization
     if 'username' not in session:
         return redirect(url_for('unique_signup'))
     current_user = session['username']
@@ -69,7 +66,6 @@ def dashboard_view():
 
 @portal_flask_app.route('/pomodoro')
 def pomodoro_page():
-    # TODO: Implement or embed a Pomodoro timer in the template
     return render_template('pomodoro.html')
 
 @portal_flask_app.route('/logout')

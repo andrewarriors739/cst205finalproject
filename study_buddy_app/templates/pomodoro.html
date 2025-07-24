@@ -1,13 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Pomodoro Timer</title>
+    <meta charset="UTF-8">
+    <title>Study Buddy | Pomodoro Timer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h2>Pomodoro Timer</h2>
-    <p id="timer">25:00</p>
-    <button onclick="startTimer()">Start</button>
-    <button onclick="resetTimer()">Reset</button>
+    <header>
+        <h1>📚 Study Buddy</h1>
+        <p>Your simple solution to study matching and time management</p>
+    </header>
+    <main>
+        <h2>Pomodoro Timer</h2>
+        <p id="timer">25:00</p>
+        <div class="pomodoro-controls">
+            <button onclick="startTimer()" class="btn-start">Start</button>
+            <button onclick="resetTimer()" class="btn-start">Reset</button>
+        </div>
+            <div style="text-align: center; margin-top: 20px;">
+            <a href="/dashboard" class="btn-start">⬅ Back to Dashboard</a>
+        </div>
+    </main>
+    <footer>
+        &copy; 2025 CST205 Study Buddy Team • Alexis, Anthony J., James, Andre
+    </footer>
 
     <script>
         let timeLeft = 1500;
@@ -15,13 +31,12 @@
 
         function startTimer() {
             clearInterval(timer);
-            timer = setInterval(() => {
+            timer = setInterval(function() {
                 if (timeLeft > 0) {
                     timeLeft--;
                     const minutes = Math.floor(timeLeft / 60);
                     const seconds = timeLeft % 60;
-                    document.getElementById("timer").innerText =
-                      `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                    document.getElementById("timer").innerText = minutes + ":" + seconds.toString().padStart(2, '0');
                 } else {
                     clearInterval(timer);
                     alert("Time's up!");

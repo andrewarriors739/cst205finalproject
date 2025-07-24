@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+h2, h3 {
+    color: #4CAF50;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 8px 0;
+}
+
+form input, form select, form button {
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+.btn-start {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-start:hover {
+    background-color: #45a049;
+}
+
+footer {
+    text-align: center;
+    padding: 16px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+#timer {
+    font-size: 64px;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+}
+.pomodoro-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
