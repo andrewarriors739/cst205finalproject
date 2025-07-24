@@ -3,6 +3,8 @@
 
 Last Updated 7/24/2025
 
+Trello Board: [CST205 Final Project Board](https://trello.com/b/uCiWWXGM/my-trello-board)
+
 ## Overview
 **Study Buddy** is a student-focused web application designed to help college students stay organized, manage study sessions, and connect with peers who share similar academic goals. Built as part of the CST 205 Design Project, this app blends task tracking, Pomodoro time management, and a study partner matching system into a clean, intuitive interface.
 
