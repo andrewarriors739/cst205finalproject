@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <header>
@@ -9,33 +10,58 @@
         <p>Your simple solution to study matching and time management</p>
     </header>
     <main>
-        <h2>Welcome, {{ learner }}!</h2>
+        <div class="profile-container">
+            {% if profile_picture %}
+                <img src="{{ profile_picture }}" alt="Profile Picture" class="profile-picture">
+            {% else %}
+                <div class="profile-placeholder">👤</div>
+            {% endif %}
+            <h2>Welcome, {{ learner }}!</h2>
+        </div>
 
-    <h2>Your Study Buddy Matches:</h2>
-    <ul>
-        {% for match in match_suggestions %}
-        <li>{{ match.username }} – {{ match.course }} – {{ match.study_style }} – Contact: {{ match.contact }}</li>
-        {% else %}
-        <li>No matches found.</li>
-        {% endfor %}
-    </ul>
+        <h2>Your Study Buddy Matches:</h2>
+        <ul>
+            {% for match in match_suggestions %}
+            <li>{{ match.username }} – {{ match.course }} – {{ match.study_style }} – Contact: {{ match.contact }}</li>
+            {% else %}
+            <li>No matches found.</li>
+            {% endfor %}
+        </ul>
 
-    <h2>Task List</h2>
-    <form method="POST">
-        <input type="text" name="task_entry" placeholder="New task" required>
-        <button type="submit">Add</button>
-    </form>
+        <h2>Task List</h2>
+        <form method="POST">
+            <input type="text" name="task_entry" placeholder="New task" required>
+            <button type="submit">Add</button>
+        </form>
 
-    <ul>
-        {% for task in task_list %}
-        {% if task.user == learner %}
-        <li>{{ task.desc }}</li>
-        {% endif %}
-        {% endfor %}
-    </ul>
+        <ul>
+            {% for task in task_list %}
+            <li>
+                <form action="{{ url_for('main.complete_task', task_id=task.id) }}" method="POST" style="display:inline;">
+                    <button type="submit" style="background:none; border:none; cursor:pointer;">
+                        {% if task.complete %}
+                            ✅
+                        {% else %}
+                            ⬜
+                        {% endif %}
+                    </button>
+                </form>
+                {% if task.complete %}
+                    <s>{{ task.description }}</s>
+                {% else %}
+                    {{ task.description }}
+                {% endif %}
+                <form action="{{ url_for('main.delete_task', task_id=task.id) }}" method="POST" style="display:inline;">
+                    <button type="submit" style="color:red;">Delete</button>
+                </form>
+            </li>
+            {% else %}
+            <li>No tasks yet.</li>
+            {% endfor %}
+        </ul>
 
-    <a href="/pomodoro">Pomodoro Timer</a> |
-    <a href="/logout">Logout</a>
+        <a href="{{ url_for('main.pomodoro_page') }}">Pomodoro Timer</a> |
+        <a href="{{ url_for('main.session_logout') }}">Logout</a>
+    </main>
 </body>
 </html>
-

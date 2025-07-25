@@ -12,9 +12,25 @@
     </header>
     <main>
         <h2>Create Your Profile</h2>
-        <form method="POST" style="display: flex; flex-direction: column; max-width: 400px; margin: 0 auto;">
+        
+        <!-- Flash messages for errors -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message flash-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <form method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; max-width: 400px; margin: 0 auto;">
             <label for="username">Username:</label>
             <input type="text" name="username" id="username" required>
+
+            <label for="profile_picture">Profile Picture (optional):</label>
+            <input type="file" name="profile_picture" id="profile_picture"  accept="images/*" style="margin-bottom: 15px;">
+            <small style="color: #666; margin-bottom: 15px;">Supported formats: PNG, JPG, JPEG, GIF, WebP</small>
 
             <label for="course">Course:</label>
             <input type="text" name="course" id="course" required>
